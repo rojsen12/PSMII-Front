@@ -112,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "http://10.0.2.2:3000/register"; // Zastąp "your-backend-url" odpowiednim URL Twojego backendu
+        String url = "http://10.0.2.2:3000/register";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,

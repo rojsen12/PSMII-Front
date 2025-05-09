@@ -56,7 +56,7 @@ public class CreateFlashcardsActivity extends AppCompatActivity {
         btnBackToMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Zamyka aktualną aktywność i wraca do poprzedniej (MainActivity)
+                finish();
             }
         });
     }

@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Tworzymy obiekt JSON z danymi logowania
         JSONObject requestBody = new JSONObject();
         try {
             requestBody.put("login", email);
@@ -77,10 +76,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // URL do API
         String url = "http://10.0.2.2:3000/login";
 
-        // Tworzymy JsonObjectRequest zamiast StringRequest
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST, url, requestBody,
                 new Response.Listener<JSONObject>() {
@@ -91,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
                             String token = response.getString("token");
                             JSONObject user = response.getJSONObject("user");
 
-                            // Zapisujemy dane użytkownika
                             SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString("token", token);
@@ -102,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Zalogowano pomyślnie", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Przechodzę do MainActivity");
 
-                            // Prostsze przejście do MainActivity
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
