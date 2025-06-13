@@ -1,82 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".CreateFlashcardsActivity">
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
-        android:text="Stwórz Fiszki"
-        android:textAlignment="center"
-        android:textColor="#2E7D32"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="Utwórz nowy zestaw fiszek" />
 
     <EditText
         android:id="@+id/etSetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#2E7D32"
-        android:hint="Nazwa zestawu fiszek"
-        android:inputType="text" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Nowa fiszka"
-        android:textColor="#2E7D32"
-        android:textSize="18sp" />
+        android:hint="Nazwa zestawu"
+        android:inputType="textCapSentences"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etFrontSide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#2E7D32"
-        android:hint="Przód fiszki (np. pytanie)"
+        android:hint="Przód fiszki (np. Pytanie)"
         android:inputType="textMultiLine"
-        android:minLines="2" />
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/etBackSide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="#2E7D32"
-        android:hint="Tył fiszki (np. odpowiedź)"
-        android:inputType="textMultiLine"
-        android:minLines="2" />
+        android:hint="Tył fiszki (np. Odpowiedź)"
+        android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/btnAddFlashcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#2E7D32"
-        android:text="Dodaj fiszkę"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_marginTop="24dp"
+        android:text="Dodaj fiszkę i zostaw" />
 
     <Button
-        android:id="@+id/btnBackToMenu"
+        android:id="@+id/btnSaveAndFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#2E7D32"
-        android:text="Powrót do menu"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF" />
+        android:layout_marginTop="8dp"
+        android:text="Zapisz i zakończ" />
 
 </LinearLayout>

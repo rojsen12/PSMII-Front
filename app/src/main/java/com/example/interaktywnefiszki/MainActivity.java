@@ -14,8 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvTitle;
     private Button btnFlashcardsList;
-    private Button btnCreateFlashcards;
-    private Button btnStatistics;
+
     private Button btnLogout;
 
     @Override
@@ -30,28 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.tvTitle);
         btnFlashcardsList = findViewById(R.id.btnFlashcardsList);
-        btnCreateFlashcards = findViewById(R.id.btnCreateFlashcards);
-        btnStatistics = findViewById(R.id.btnStatistics);
         btnLogout = findViewById(R.id.btnLogout);
 
         btnFlashcardsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFlashcardsList();
-            }
-        });
-
-        btnCreateFlashcards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCreateFlashcards();
-            }
-        });
-
-        btnStatistics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openStatistics();
             }
         });
 
@@ -80,15 +63,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openCreateFlashcards() {
-        Intent intent = new Intent(MainActivity.this, CreateFlashcardsActivity.class);
-        startActivity(intent);
-    }
-
-    private void openStatistics() {
-        Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
-        startActivity(intent);
-    }
 
     private void logout() {
         SharedPreferences.Editor editor = getSharedPreferences("AppPrefs", MODE_PRIVATE).edit();

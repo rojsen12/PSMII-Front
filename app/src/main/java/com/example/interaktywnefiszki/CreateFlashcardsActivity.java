@@ -1,5 +1,7 @@
 package com.example.interaktywnefiszki;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +18,10 @@ public class CreateFlashcardsActivity extends AppCompatActivity {
     private EditText etFrontSide;
     private EditText etBackSide;
     private Button btnAddFlashcard;
-    private Button btnBackToMenu;
+    private Button btnSaveAndFinish;
+
+    private FlashcardRepository repository;
+    private String initialSetName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,19 @@ public class CreateFlashcardsActivity extends AppCompatActivity {
         etFrontSide = findViewById(R.id.etFrontSide);
         etBackSide = findViewById(R.id.etBackSide);
         btnAddFlashcard = findViewById(R.id.btnAddFlashcard);
-        btnBackToMenu = findViewById(R.id.btnBackToMenu);
+        btnSaveAndFinish = findViewById(R.id.btnSaveAndFinish);
+
+        repository = new FlashcardRepository(getApplication());
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("setName")) {
+            initialSetName = intent.getStringExtra("setName");
+            etSetName.setText(initialSetName);
+            etSetName.setEnabled(false);
+            tvTitle.setText("Dodaj fiszkę do zestawu");
+        } else {
+            tvTitle.setText("Utwórz nowy zestaw fiszek");
+        }
 
         btnAddFlashcard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +55,11 @@ public class CreateFlashcardsActivity extends AppCompatActivity {
                 String back = etBackSide.getText().toString().trim();
 
                 if (setName.isEmpty() || front.isEmpty() || back.isEmpty()) {
-                    Toast.makeText(CreateFlashcardsActivity.this,
-                            "Wypełnij wszystkie pola",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateFlashcardsActivity.this, "Wypełnij wszystkie pola", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(CreateFlashcardsActivity.this,
-                            "Fiszka dodana do zestawu: " + setName,
-                            Toast.LENGTH_SHORT).show();
+                    repository.addFlashcardToSet(setName, front, back);
+
+                    Toast.makeText(CreateFlashcardsActivity.this, "Fiszka dodana!", Toast.LENGTH_SHORT).show();
 
                     etFrontSide.setText("");
                     etBackSide.setText("");
@@ -53,10 +68,31 @@ public class CreateFlashcardsActivity extends AppCompatActivity {
             }
         });
 
-        btnBackToMenu.setOnClickListener(new View.OnClickListener() {
+        btnSaveAndFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                String finalSetName = etSetName.getText().toString().trim();
+
+                if (initialSetName == null) {
+                    if (finalSetName.isEmpty()) {
+                        Toast.makeText(CreateFlashcardsActivity.this, "Nazwa zestawu nie może być pusta", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    repository.addSet(finalSetName, new FlashcardRepository.RepositoryCallback<Long>() {
+                        @Override
+                        public void onComplete(Long result) {
+                            runOnUiThread(() -> {
+                                Intent resultIntent = new Intent();
+                                resultIntent.putExtra("newSetName", finalSetName);
+                                setResult(Activity.RESULT_OK, resultIntent);
+                                finish();
+                            });
+                        }
+                    });
+                } else {
+                    finish();
+                }
             }
         });
     }

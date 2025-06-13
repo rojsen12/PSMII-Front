@@ -15,27 +15,8 @@
         android:theme="@style/Theme.InteraktywneFiszki"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".StatisticsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.InteraktywneFiszki" />
-        <activity
-            android:name=".FlashcardsListActivity"
-            android:exported="false"
-            android:theme="@style/Theme.InteraktywneFiszki" />
-        <activity
-            android:name=".CreateFlashcardsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.InteraktywneFiszki" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.InteraktywneFiszki" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false"
-            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <!-- Aktywność startowa (Ekran Logowania) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -44,12 +25,45 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <!-- Pozostałe aktywności aplikacji -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".FlashcardsListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".CreateFlashcardsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".FlashcardDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".SolveFlashcardsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
+        <activity
+            android:name=".StatisticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InteraktywneFiszki" />
+
     </application>
 
 </manifest>

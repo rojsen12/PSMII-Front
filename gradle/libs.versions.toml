@@ -1,6 +1,6 @@
 [versions]
-agp = "8.6.0"
-kotlin = "1.9.0"
+agp = "8.4.1"
+kotlin = "1.9.23"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -15,6 +15,7 @@ constraintlayout = "2.2.0"
 volley = "1.2.1"
 navigationFragment = "2.8.5"
 navigationUi = "2.8.5"
+ksp = "1.9.23-1.0.19"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,4 +43,5 @@ androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui"
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
